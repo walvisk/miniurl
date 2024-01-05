@@ -1,0 +1,14 @@
+<div class="px-4 py-5 my-5 text-center">
+  <%=image_tag("logo.svg", class: "d-block mx-auto mb-4", height: '57', width: '72')%>
+  <h1 class="display-5 fw-bold">MINIURL</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Your Alternative URL Shortener</p>
+    <div data-controller="home">
+      <div class="input-group mb-3">
+        <%= text_field_tag("url", @short_url, class: "form-control")%>
+        <%= text_field_tag("url", @og_url, hidden: "true",  "data-home-target": "ogurl")%>
+        <button class="btn btn-primary" type="button" id="button-shorten" data-action="click->home#gotoDestination">Go!</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { FetchRequest } from '@rails/request.js'
 
 export default class extends Controller {
-  static targets = [ "urlquery" ]
+  static targets = [ "urlquery", "ogurl" ]
 
   shorten(e){
     const urlQueryElement = this.urlqueryTarget
@@ -11,11 +11,20 @@ export default class extends Controller {
 
     this.postShorten(requestData)
     .then(response => {
-      console.log(response)
+      const rootUrl = response.root_url
+      const keyUrl = response.key
+      const shortenedUrl = rootUrl + keyUrl
+      window.location.href = shortenedUrl
     })
     .catch(error => {
       console.log(error)
     })
+  }
+
+  gotoDestination(e) {
+    const urlElement = this.ogurlTarget
+    const urlDestination = urlElement.value
+    window.location.href = urlDestination
   }
 
   async postShorten (bodyRequest) {

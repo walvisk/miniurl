@@ -1,9 +1,6 @@
 require 'securerandom'
 
 class MappingsController < ApplicationController
-  def show
-  end
-
   def create
     original_url = mappings_param[:og_url]
     rand_key = SecureRandom.alphanumeric(8)
@@ -16,7 +13,7 @@ class MappingsController < ApplicationController
 
     if mapping_url.valid?
       mapping_url.save!
-      render :json => {:short_url => "#{request.host}/#{mapping_url.key}"}
+      render :json => {:root_url => root_url, :key => mapping_url.key}
     else
       head :bad_request
     end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/:key", to: "home#show"
   root "home#index"
   resources :mappings, only: [:create, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
