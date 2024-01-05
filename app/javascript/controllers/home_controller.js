@@ -1,22 +1,35 @@
 import { Controller } from "@hotwired/stimulus"
+import { FetchRequest } from '@rails/request.js'
 
-// Connects to data-controller="home"
 export default class extends Controller {
   static targets = [ "urlquery" ]
 
   shorten(e){
-    e.preventDefault()
     const urlQueryElement = this.urlqueryTarget
     const urlQuery = urlQueryElement.value
-    const requestData = { url: urlQuery }
-    fetch("/mappings/create", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(requestData)
-    }).then(response => {
+    const requestData = { og_url: urlQuery }
+
+    this.postShorten(requestData)
+    .then(response => {
       console.log(response)
-    }).catch(error => {
+    })
+    .catch(error => {
       console.log(error)
     })
+  }
+
+  async postShorten (bodyRequest) {
+    try {
+      const request = new FetchRequest(
+        'post', '/mappings',
+        { body: JSON.stringify(bodyRequest) }
+      )
+      const response = await request.perform()
+      const data = await response.json
+
+      return data
+    } catch (error) {
+      return error
+    }
   }
 }
