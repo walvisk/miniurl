@@ -3,11 +3,11 @@
   <h1 class="display-5 fw-bold">MINIURL</h1>
   <div class="col-lg-6 mx-auto">
     <p class="lead mb-4">Your Alternative URL Shortener</p>
-    <form>
+    <div data-controller="home">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Place URL here">
-        <button class="btn btn-primary" type="button" id="button-shorten">Shorten!</button>
+        <input type="text" class="form-control" placeholder="Place URL here" id="url-query" data-home-target="urlquery">
+        <button class="btn btn-primary" type="button" id="button-shorten" data-action="click->home#shorten">Shorten!</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>
