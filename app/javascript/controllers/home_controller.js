@@ -16,12 +16,12 @@ export default class extends Controller {
       const shortenedUrl = rootUrl + keyUrl
       window.location.href = shortenedUrl
     })
-    .catch(error => {
-      console.log(error)
+    .catch(() => {
+      alert("Error Happening from Server")
     })
   }
 
-  gotoDestination(e) {
+  gotoDestination() {
     const urlElement = this.ogurlTarget
     const urlDestination = urlElement.value
     window.location.href = urlDestination
