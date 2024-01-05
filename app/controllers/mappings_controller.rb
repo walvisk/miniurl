@@ -3,9 +3,9 @@ class MappingsController < ApplicationController
     original_url = mappings_param[:og_url]
     mapping_url = MappingCreationJob.perform_now(original_url)
 
-    render(json: {root_url: root_url, key: mapping_url.key})
-  rescue StandardError
-    head :bad_request
+    render(json: { root_url: root_url, key: mapping_url.key })
+  rescue StandardError => e
+    render(json: { error: e.message }, status: :bad_request)
   end
 
   private def mappings_param
