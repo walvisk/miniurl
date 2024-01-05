@@ -11,13 +11,14 @@ export default class extends Controller {
 
     this.postShorten(requestData)
     .then(response => {
+      console.log(response)
       const rootUrl = response.root_url
       const keyUrl = response.key
       const shortenedUrl = rootUrl + keyUrl
       window.location.href = shortenedUrl
     })
-    .catch(() => {
-      alert("Error Happening from Server")
+    .catch((error) => {
+      alert(`Error Happening from Server,\nmessage: ${error}`)
     })
   }
 
@@ -34,11 +35,14 @@ export default class extends Controller {
         { body: JSON.stringify(bodyRequest) }
       )
       const response = await request.perform()
-      const data = await response.json
+      if (response.ok) {
+        const body = await response.json
+        return body
+      }
 
-      return data
+      throw new Error(`HTTP error! Status: ${response.statusCode}`);
     } catch (error) {
-      return error
+      throw error
     }
   }
 }
