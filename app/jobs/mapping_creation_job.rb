@@ -4,7 +4,6 @@ class MappingCreationJob < ApplicationJob
     mapping_url = Mapping.new(
       og_url: og_url,
       key: generate_key,
-      hit_count: 0
     )
 
     mapping_url.save!
