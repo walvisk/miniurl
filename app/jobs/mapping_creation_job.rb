@@ -1,3 +1,4 @@
+require 'securerandom'
 class MappingCreationJob < ApplicationJob
   def perform(og_url)
     rand_key = SecureRandom.alphanumeric(8)

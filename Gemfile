@@ -67,3 +67,7 @@ gem "bootstrap"
 
 gem "sassc-rails"
 gem "requestjs-rails"
+
+group :development, :test do
+  gem 'rspec-rails', '~> 6.1.0'
+end

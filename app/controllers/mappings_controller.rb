@@ -1,5 +1,3 @@
-require 'securerandom'
-
 class MappingsController < ApplicationController
   def create
     original_url = mappings_param[:og_url]
