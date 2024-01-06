@@ -1,24 +1,24 @@
-# README
+## MINIURL
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MINIURL is URL Shortener alternative.
 
-Things you may want to cover:
+![MINIURL](ss.png "MINIURL")
 
-* Ruby version
+It also to answer a challange from [CodingChallanges](https://codingchallenges.fyi/challenges/challenge-url-shortener)
 
-* System dependencies
+## Stack
 
-* Configuration
+- Rails
+- PostgreSQL
+- Stimulus
 
-* Database creation
+## How To Run Locally
+- Fork this repo
+- Clone to local
+- Cd to repo by `cd minurl`
+- Make sure you have a postgresql running in your local, then run `bin/rails db:create && bin/rails db:migrate`
+- run `bin/rails s`
 
-* Database initialization
+## How To Run Test
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+run `bundle exec rspec`
