@@ -18,7 +18,7 @@ export default class extends Controller {
       window.location.href = shortenedUrl
     })
     .catch((error) => {
-      alert(`Error Happening from Server,\nmessage: ${error}`)
+      alert(`Error Happening from Server,\nmessage: ${error.message}`)
     })
   }
 
@@ -40,7 +40,7 @@ export default class extends Controller {
         return body
       }
 
-      throw new Error(`HTTP error! Status: ${response.statusCode}`);
+      throw new Error(`${await response.text}`);
     } catch (error) {
       throw error
     }
