@@ -9,6 +9,12 @@
         <%= text_field_tag("og_url", @og_url, hidden: "true",  "data-home-target": "ogurl")%>
         <button class="btn btn-primary" type="button" id="button-shorten" data-action="click->home#gotoDestination">Go!</button>
       </div>
+      <div class="input-group mb-3">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Hit Count: </label>
+        <div class="col-sm-10">
+          <%= text_field_tag("hit-count", @hit_count, readonly: true, class: "form-control-plaintext")%>
+        </div>
+      </div>
     </div>
   </div>
 </div>

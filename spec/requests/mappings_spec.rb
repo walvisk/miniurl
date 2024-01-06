@@ -21,7 +21,7 @@ RSpec.describe "Mappings", type: :request do
         expect(response.content_type).to eq('application/json; charset=utf-8')
 
         parsed_response = JSON.parse(response.body)
-        expect(parsed_response['error']).to eq("Validation failed: Og url is invalid")
+        expect(parsed_response['error']).to eq("Validation failed: URL is invalid")
       end
     end
   end
